@@ -1,0 +1,133 @@
+.podcasts-container {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.podcasts {
+  margin: 2em;
+}
+
+.podcast-covers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4em;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.podcastSummary {
+  padding: 2em 0;
+  text-align: left;
+}
+
+.active-shadow {
+  box-shadow: 0 0 2px #fff, 0 0 20px #666;
+}
+
+
+.podcastActive, .podcastListActive {
+  display: block;
+}
+
+.podcastInactive, .podcastListInactive {
+  display: none;
+}
+
+.podcastArt {
+  cursor: pointer;
+  width: 100%;
+  transition: .5s
+}
+
+.blur {
+  filter: blur(1px);
+  filter: grayscale(100%);
+}
+
+.podcastArt:hover {
+  box-shadow: 0 0 2px #fff, 0 0 20px #666;
+  filter: none;
+}
+
+.podcast-list {
+  display: grid;
+  grid-gap: 1em;
+}
+  .podcastEpisode {
+    display: grid;
+    grid-template-rows: min-content min-content min-content 1fr;
+    grid-gap: 1em;
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 1em;
+  }
+    .podcastEpisode:hover {
+      background: #f6f6f6;
+    }
+
+  .podcast-image {
+    grid-row-start: 1;
+    width: 100%;
+  }
+
+  .podcast-title {
+    grid-row-start: 2;
+  }
+
+  .podcast-date {
+    grid-row-start: 3;
+    margin: 0;
+    padding: 0;
+  }
+
+  .podcast-description {
+    grid-row-start: 4;
+    padding: 0;
+    margin: 0;
+  }
+
+  @media only screen and (min-width: 600px) {
+
+    .podcastSummary {
+      padding: 2em;
+      text-align: justify;
+    }
+
+    .podcast-covers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .podcastEpisode {
+      grid-template-columns: 50% 1fr;
+      grid-template-rows: min-content min-content 1fr;
+    }
+
+      .podcast-image {
+        grid-row-start: 1;
+        grid-row-end: 4;
+      }
+    
+      .podcast-title {
+        grid-column-start: 2;
+        grid-row-start: 1;
+      }
+    
+      .podcast-date {
+        grid-column-start: 2;
+        grid-row-start: 2;
+      }
+    
+      .podcast-description {
+        grid-column-start: 2;
+        grid-row-start: 3;
+      }
+  
+
+  }
+
+@media only screen and (min-width: 1200px) {
+
+
+
+}

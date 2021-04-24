@@ -1,0 +1,60 @@
+<div *ngIf="user" class="account-settings">
+  <div class="account-settings-left">
+    <div class="normal-details-section">
+      <div *ngIf="!user.isActivated">
+        <app-account-activation></app-account-activation>
+      </div>
+      <app-account-info-edit [(user)]="user"></app-account-info-edit>
+    </div>
+    <app-account-password-edit [(user)]="user" (userChange)="onUserStatusChanged()"></app-account-password-edit>
+  </div>
+  <div class="account-settings-right">
+    <div class="patreon-section">
+      <h2>Support Door Monster</h2>
+      <button *ngIf="!currentSupporter" class="btn btn-default input-button center-button patreon-button"
+              routerLink="/checkout">Subscribe to DMTV
+      </button>
+      <button *ngIf="currentSupporter" class="btn btn-default input-button center-button patreon-button"
+              routerLink="/manage">Manage Subscription
+      </button>
+      <button class="btn btn-default input-button center-button patreon-button">
+        <a
+          [href]="'https://www.patreon.com/oauth2/authorize?response_type=code&client_id=' + getPatreonClientId() + '&redirect_uri=' + getRedirectHostname() + '&scope=identity identity.memberships'"
+          class="has-text-white">Sync
+          with Patreon</a></button>
+      <p *ngIf="patreonStatusConfirmed">Congratulations! We've confirmed you're a Patron.</p>
+    </div>
+    <a class="button"
+       href="https://discordapp.com/api/oauth2/authorize?client_id=573124024331403275&redirect_uri=https%3A%2F%2Fwww.doormonster.tv%2Fdiscord%2Fredirect&response_type=code&scope=identify">Connect
+      your account to discord(Beta)</a>
+    <div class="development-info">
+      <p>Thanks for being a founding user of Door Monster TV! We're constantly looking to make
+        improvements and add new features, and we could use your help. Check out our list of planned features below, and
+        send us your suggestions for additional features, improvements to existing ones, or things on the site
+        that just need fixing.
+        <br/>
+        <br/>
+        Future changes include:
+      </p>
+      <ul>
+        <li>Public profile pages</li>
+        <li>More control over subscriptions and notifications</li>
+        <li>Revamped video organization and navigation</li>
+        <li>Matching podcast organizational changes</li>
+        <li>Videos and podcasts from other creators</li>
+        <li>A rating system for scoring videos</li>
+        <li>An optimized mobile experience, including maybe an independant app</li>
+        <li>Inclusion of ads for monetization</li>
+        <li>Bonus features based on Patreon donations</li>
+      </ul>
+      <p>Send us your suggestions below!</p>
+      <div class="suggestion-form-container">
+        <form (ngSubmit)="sendFeedback()" class="suggestion-form" name="user-feedback-form">
+          <textarea [(ngModel)]="feedbackContent" class="feedback-text-input" cols="50" name="feedback"
+                    rows="5"></textarea>
+          <button class="btn btn-default input-button center-button" type="submit">{{feedbackMessage}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

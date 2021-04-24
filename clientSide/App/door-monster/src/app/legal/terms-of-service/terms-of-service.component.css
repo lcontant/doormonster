@@ -1,0 +1,29 @@
+.TOS-container {
+    max-width: 900px;
+    margin: 0 auto 1em auto;
+}
+  
+.terms-of-service {
+    text-align: justify;
+    margin: 0 1em;
+}
+
+.alt-title {
+    margin-top: 0.5em;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .TOS-container {
+        margin: 0 auto 2em auto;
+    }
+
+    .terms-of-service {
+        margin: 0 2em;
+    }
+
+    .alt-title {
+        margin-top: 1em;
+    }
+
+}

@@ -1,0 +1,141 @@
+.video-content {
+  margin: 0 auto;
+  width: 75%;
+  margin-left: 11%;
+}
+
+.video-info {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto 1fr;
+  row-gap: 5px;
+  font-size: 75%;
+}
+  .video-info h1, .video-info h2, .video-info h3, .video-info h4 {
+    margin: 0;
+    padding: 0;
+  }
+
+.video-title {
+  justify-self: left;
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+.view-count {
+  display: none;
+}
+
+.video-data {
+  justify-self: left;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  color: #999;
+}
+
+.comments {
+  padding: 0 20px 20px 20px;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  display: inline-block;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #c04b27;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #c04b27;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.playlist {
+  display: none;
+  margin-left: -30px;
+}
+.reverse-order {
+  align-content: flex-end;
+  float: right;
+  font-size: 20px;
+}
+
+@media only screen and (min-width: 600px) {
+
+  .video-info {
+    font-size: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 900px) {
+
+  .view-count {
+    display: inline-block;
+    justify-self: right;
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+  .view-count-small {
+    display: none;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .playlist {
+    display: inline-block;
+  }
+
+  .reverse-order {
+    display: inline-block;
+  }
+
+
+}
+
+@media only screen and (min-width: 1600px) {
+
+
+}

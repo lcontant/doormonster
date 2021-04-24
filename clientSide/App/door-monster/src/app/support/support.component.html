@@ -1,0 +1,62 @@
+<div class="support-container">
+  <div class="support">
+    <h1>Subscribe to DMTV</h1>
+    <p class="summary">Door Monster is almost entirely fan-funded, and we want to keep it that way, ideally with no site ads. You can help Door Monster continue
+      making the content you love, and gain bonus perks in the process!
+      All payments made on DMTV are submitted via Stripe, which means we don't recieve or store your payment information
+      in any way. Alternatively, you can also donate and recieve the same rewards on <a
+        href="https://patreon.com/doormonster">Patreon.com</a>.
+    </p>
+    <div class="tab-section">
+      <a class="nav-item" (click)="setActiveTab(0)">$1</a>
+      <a class="nav-item" (click)="setActiveTab(1)">$5</a>
+      <a class="nav-item" (click)="setActiveTab(2)">$10</a>
+      <a class="nav-item" (click)="setActiveTab(3)">$20</a>
+      <a class="nav-item" (click)="setActiveTab(4)">$50</a>
+      <a class="nav-item" (click)="setActiveTab(5)">$500</a>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(0)">
+      <h1>$1/month</h1>
+      <p>
+        For only one dollar a month, you get access to the official Door Monster Community Discord Server
+        , and we'll pay attention to you more than we do other people!      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(1)">
+      <h1>$5/month</h1>
+      <p>
+        In addition to all previous reward, you'll have access to an exclusive, Patron-only, bi-weekly podcast here and on DoorMonster.tv!</p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(2)">
+      <h1>$10/month</h1>
+      <p>
+        In addition to all previous rewards, you'll receive monthly discount codes for our stores on DFTBA and Teespring, plus digital downloads of the past month's PDFs of the scripts of the videos (if applicable).
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(3)">
+      <h1>$20/month</h1>
+      <p>
+        In addition to all previous rewards, you will be permanantly credited in both the endplate and description of next month's videos!
+      </p>
+      <p>
+        You may include a link to anything of your choosing in the description - your channel, website, whatever. Just let us know via private message!
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(4)">
+      <h1>$50/month</h1>
+      <p>In addition to all previous rewards, you can request one personalized video message from the crew each month - this can be a happy birthday, a congratulations, or another message of your choosing. Just send us your request here on Patreon or via Discord! </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(5)">
+      <p>If you find it in your heart to donate this ridiculous amount of money, then you're already a better person than any of us. If you're close, come join us for lunch one day! If not, we'll have a private video chat. Lunch meetings are limited to one per person, but video chats can be redeemed once a month.
+      </p>
+    </div>
+    <form class="checkout-section">
+      <button [disabled]="subcriptionRequestStatusMessage && subcriptionRequestStatusMessage.length > 0"
+              class="btn btn-default input-button center-button update-button" (click)="onCheckoutClick($event)">
+        Subscribe
+      </button>
+      <p class="error" *ngIf="!subscribedSuccessfully">{{subcriptionRequestStatusMessage}}</p>
+      <p class="success" *ngIf="subscribedSuccessfully">{{subcriptionRequestStatusMessage}}</p>
+    </form>
+    <a class="support" href="http://patreon.com/DoorMonster">Use Patreon Instead</a>
+  </div>
+</div>

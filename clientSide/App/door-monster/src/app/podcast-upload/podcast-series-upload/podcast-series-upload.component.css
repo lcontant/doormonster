@@ -1,0 +1,24 @@
+
+.form-item-wide {
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+}
+
+.thumbnail {
+  max-width: 180px;
+  width: 180px;
+  height: 102px;
+  display: inline-block;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 600px) {
+  .form-item-wide {
+    grid-template-columns: 1fr min-content;
+  }
+  .file-select {
+    margin: 20px;
+  }
+}

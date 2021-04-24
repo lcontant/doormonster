@@ -1,0 +1,36 @@
+.card-item {
+  width: 35%;
+  display: inline-block;
+  border: solid #c04b27;
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card-branding {
+  margin-right: 10px;
+  display: inline;
+}
+
+.card-number {
+  margin-right: 10px;
+}
+
+.card-date {
+  margin-right: 10px;
+}
+
+.card-list {
+  width: 100%;
+}
+
+.delete-button {
+  display: inline;
+  color: black;
+}
+
+.delete-button:hover {
+  color: red;
+  cursor: pointer;
+}
+

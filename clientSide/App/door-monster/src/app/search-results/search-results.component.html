@@ -1,0 +1,18 @@
+<div class="search-container">
+  <div class="search">
+    <h2 class='showSearch'>Showing results for &quot;{{searchQuery}}&quot;</h2>
+    <ul class='search-results'>
+      <li *ngFor="let video of videos" class='searchResultItem video-item' >
+        <a [routerLink]="'/videos/' + video.videoID">
+          <img [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + sanitizePath(video.videoThumbnail)" [alt]="video.videoTitle" />
+          <div class="search-info">
+            <div class='searchTitle'>{{video.videoTitle}}</div>
+            <div class="searchCategory">{{video.videoSeries}}</div>
+            <div class="searchDate">{{video.videoPublishDate | date:'fullDate':'+0600'}}</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!--<div (click)="scroll_back_to_top()" class="back-to-top-button input-button center-button">back to top</div>-->
+</div>

@@ -1,0 +1,45 @@
+.mobile-navmenu {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 35px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top: 3px solid #872708;
+    padding-top: 3px;
+    background: #c04b27;
+}
+
+.mobile-nav-list{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0;
+    margin: 0;
+}
+.mobile-nav-item{
+}
+.mobile-nav-link{
+    background: #c04b27;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    font-size: 200%;
+    cursor: pointer;
+}
+    .mobile-nav-link:hover {
+        background: #fff;
+        color: #872708;
+    }
+
+
+/* Desktop Site */
+
+@media only screen and (min-width: 900px) {
+
+    .mobile-navmenu {
+        display: none;
+    }
+
+}

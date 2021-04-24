@@ -1,0 +1,46 @@
+<div class="user-info-container" *ngIf="currentUser">
+  <h1>Edit User</h1>
+  <div class="normal-details-section">
+    <div class="user-form-item">
+      <label class="input-label" for="usernameInput">Username</label>
+      <input class="input-field" id="usernameInput" name="username" type="text" [(ngModel)]="currentUser.username"/>
+    </div>
+    <div class="user-form-item">
+      <label class="input-label" for="verifiedInput">Is Activated</label>
+      <input class="input-field" id="verifiedInput" name="verified" type="checkbox" [(ngModel)]="currentUser.isActivated">
+    </div>
+    <div class="user-form-item">
+      <label class="input-label" for="verifiedInput">Resend verification email</label>
+      <button class="input-button" id="verificationButton" name="verified" (click)="resendVerification()">resend verification email</button>
+    </div>
+    <div class="user-form-item">
+      <label class="input-label" for="locationInput">Location</label>
+      <input class="input-field" id="locationInput" type="text" [(ngModel)]="currentUser.location"/>
+    </div>
+    <div class="user-form-item">
+      <label class="input-label" for="emailInput">Email</label>
+      <input class="input-field" id="emailInput" type="email" [(ngModel)]="currentUser.email">
+    </div>
+    <div class="user-form-item-wide">
+      <input class="file-select" id="avatarInput" type="file" (change)="onUserImageUpdate($event)" accept="image/jpeg">
+      <figure class="image is-32x32">
+        <img *ngIf="!currentImage"
+             [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + currentUser.avatar "
+             class="profile-image">
+        <img *ngIf="currentImage" [src]="currentImage" class="profile-image">
+      </figure>
+    </div>
+    <p *ngIf="profileImageIsToBig()" class="error_field">The image is too big</p>
+    <p *ngIf="userUpdateRequestSent && userUpdateRequestSuccessfull" class="success_field">The account was updated!</p>
+    <p *ngIf="userUpdateRequestSent && !userUpdateRequestSuccessfull" class="success_field">There was an error updating
+      the account</p>
+    <button class="user-form-item btn btn-default input-button center-button" [disabled]="!formIsValid()"
+            (click)="edit()">Update
+    </button>
+  </div>
+  <div>
+    <button class="BANBTN" *ngIf="!currentUser.isBanned" (click)="banUser()">BAN</button>
+    <button class="BANBTN" *ngIf="currentUser.isBanned" (click)="unBanUser()">UNBAN</button>
+  </div>
+</div>
+

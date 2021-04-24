@@ -1,0 +1,77 @@
+.account-creation {
+  grid-template-rows: min-content repeat(4, 40px) min-content;
+  grid-row-gap: 0.8em;
+}
+.TOS {
+  overflow-y: scroll;
+  height: 200px;
+  padding: 0 0.5em;
+  border: 1px solid #ccc;
+}
+.select-profile-image {
+  display: grid;
+  grid-row-gap: 0.5em;
+  grid-template-rows: 3em;
+  grid-column-gap: 0.8em;
+  margin: 1em 0;
+}
+  .profile-select-title {
+    align-self: center;
+    justify-self: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 0 1em;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+  }
+    .profile-select-title:hover {
+      background: #d3a21e;
+      color: #fff;
+      cursor: pointer;
+      border-color: #d3a21e;
+    }
+  .file-container {
+    overflow: hidden;
+    position: relative;
+  }
+    .profile-select-button {
+      align-self: center;
+      justify-self: center;
+      cursor: pointer;
+      display: block;
+      min-height: 100%;
+      min-width: 100%;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: 0;
+    }
+  .picked-avatar {
+    justify-self: center;
+    border-radius: 50%;
+    border: 4px solid #c04b27;
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    outline: none;
+  }
+
+.error_field {
+  color: red;
+}
+
+.alt-title {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+
+  .account-creation {
+    grid-template-rows: min-content repeat(4, 50px) min-content;
+  }
+
+}

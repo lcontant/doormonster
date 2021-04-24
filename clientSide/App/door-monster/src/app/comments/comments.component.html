@@ -1,0 +1,174 @@
+<div *ngIf="!comments || comments.length == 0" class="no-comments-placeholder">
+  <h1>No comments... yet</h1>
+</div>
+<div class="comment-box" *ngIf="!this.userId">
+  <button class="comment-button" *ngIf="!isCommenting" (click)="enterComment()">Leave a Comment!</button>
+  <button class="comment-button" *ngIf="isCommenting" (click)="cancelCommentIntput()">Cancel</button>
+  <div *ngIf="isCommenting">
+    <app-comment-input [user]="currentUser" [mediaId]="mediaId" (onCommentSubmit)="getComments()"
+                       [(isCommenting)]="isCommenting"></app-comment-input>
+  </div>
+</div>
+<div>
+  <div>
+    <button class="input-button sort-button" *ngIf="!sortedByUpVote" (click)="sortByUpvote()"><i class="fa fa-sort"></i>
+      SORT BY SCORE
+    </button>
+    <button class="input-button sort-button" *ngIf="sortedByUpVote" (click)="sortByDate()"><i class="fa fa-sort"></i>SORT
+      BY RECENT
+    </button>
+  </div>
+  <div *ngFor="let comment of displayComments" class="comments-container">
+    <a [routerLink]="'/videos/' + comment.mediaId"><p *ngIf="this.userId">{{comment.title}}</p></a>
+    <div class="comment ">
+      <div class="image-section">
+        <a [routerLink]="'/profile/' + comment.author.userId">
+          <figure class="image is-64x64">
+            <img onerror="this.src = '../../assets/images/avatar_default.png'"
+                 class="profile-image"
+                 [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + comment.author.avatar "/>
+          </figure>
+        </a>
+      </div>
+      <div class="comment-header">
+        <div class="comment-name"><b>{{comment.author.getDisplayName()}}</b></div>
+        <div class="comment-score-section is-pulled-right">
+          <span
+            [class]="comment.score > 0 ? 'comment-score-positive' : 'comment-score-negative'">{{comment.score}}</span>
+          <div *ngIf="currentUser" (click)="vote(comment.commentId,true)"><i class="fa fa-chevron-up comment-chevron"
+                                                                             [ngClass]="hasUpvoted(comment.commentId) ? 'activated':''"></i>
+          </div>
+          <div *ngIf="currentUser" (click)="vote(comment.commentId, false)"><i
+            class="fa fa-chevron-down comment-chevron" [ngClass]="hasDownVoted(comment.commentId) ? 'activated':''"></i>
+          </div>
+        </div>
+      </div>
+      <div class="comment-text">
+        <p *ngIf="!isEditing(comment.commentId)">{{comment.text}}</p>
+        <div class="active-edit-comment" *ngIf="isEditing(comment.commentId)">
+          <textarea class="edit-comment-textbox" [(ngModel)]="comment.text">
+          </textarea>
+          <button class="cancel-button" (click)="cancelUpdate()">Cancel</button>
+          <button class="submit-button" (click)="updateComment(comment)">Submit</button>
+        </div>
+      </div>
+      <div class="comment-bottom">
+        <div class="is-pulled-left is-bold">
+          <b>{{comment.createdOn.toDateString()}}</b>
+          <span *ngIf="comment.edited"> - edited</span>
+        </div>
+        <div class="comment-controls is-pulled-right">
+          <button class="show-replies-text"
+                  *ngIf="comment.replies && comment.replies.length > 0 && !comment.showRepliesFor"
+                  (click)="getRepliesFor(comment.commentId)">View {{comment.replies.length}} Replies
+          </button>
+          <button class="show-replies-text" *ngIf="comment.replies && comment.showRepliesFor"
+                  (click)="getRepliesFor(comment.commentId)">Hide replies
+          </button>
+          <button class="delete-comment"
+                  *ngIf="currentUser && currentUser.userId == comment.userId || currentRole && currentRole.ranking == 0"
+                  (click)="deleteComment(comment)"><i class="fa fa-trash"></i></button>
+          <button class="edit-comment" *ngIf="currentUser && currentUser.userId == comment.userId"
+                  (click)="startEditing(comment.commentId)"><i class="fa fa-edit"></i></button>
+          <button class="reply-button" *ngIf="currentUser" (click)="startReplyingTo(comment)"><span><i
+            class="fa fa-reply"></i></span></button>
+        </div>
+      </div>
+      <div class="inner-reply">
+        <div *ngIf="isReplyingTo(comment) && isReplying">
+          <app-comment-input [user]="currentUser" [mediaId]="mediaId" [isReplying]="isReplying"
+                             [replyingTo]="replyingTo" [parentCommentId]="comment.commentId"
+                             [(isCommenting)]="isReplying" (onCommentSubmit)="getComments()"></app-comment-input>
+        </div>
+        <div *ngIf="comment.showRepliesFor">
+          <div *ngFor="let reply of comment.replies" class="reply">
+            <div class="image-section">
+              <a [routerLink]="'/profile/' + reply.author.userId">
+                <figure class="image is-64x64">
+                  <img class="profile-image"
+                       onerror="this.src = 'https://s3.amazonaws.com/doormonster/assets/images/avatar_default.png'"
+                       [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + reply.author.avatar "/>
+                </figure>
+              </a>
+            </div>
+            <div class="comment-header">
+              <div class="comment-name"><b>{{reply.author.getDisplayName()}}</b></div>
+              <div class="comment-score-section is-pulled-right">
+                <span
+                  [class]="reply.score > 0 ? 'comment-score-positive' : 'comment-score-negative'">  {{reply.score}}</span>
+                <div *ngIf="currentUser" (click)="vote(reply.commentId,true)"><i
+                  class="fa fa-chevron-up comment-chevron"
+                  [ngClass]="hasUpvoted(comment.commentId) ? 'activated':''"></i></div>
+                <div *ngIf="currentUser" (click)="vote(reply.commentId, false)"><i
+                  class="fa fa-chevron-down comment-chevron"
+                  [ngClass]="hasDownVoted(comment.commentId) ? 'activated':''"></i></div>
+              </div>
+            </div>
+            <div class="comment-text">
+              <p>{{reply.text}}</p>
+
+              <div class="active-edit-comment" *ngIf="isEditing(reply.commentId)">
+                <textarea class="edit-comment-textbox" [(ngModel)]="reply.text">
+                </textarea>
+                <button class="cancel-button" (click)="cancelUpdate()">Cancel</button>
+                <button class="submit-button" (click)="updateComment(reply)">Submit</button>
+              </div>
+            </div>
+            <div class="comment-bottom">
+              <div class="is-pulled-left">
+                {{reply.createdOn.toDateString()}}
+                <span *ngIf="reply.edited"> - edited</span>
+              </div>
+              <div class="comment-controls is-pulled-right">
+                <button class="delete-comment"
+                        *ngIf="currentUser && currentUser.userId == reply.userId || currentRole &&  currentRole.ranking == 0"
+                        (click)="deleteComment(reply)"><i class="fa fa-trash"></i></button>
+                <button class="edit-comment" *ngIf="currentUser && currentUser.userId == reply.userId"
+                        (click)="startEditing(reply.commentId)"><i class="fa fa-edit"></i></button>
+                <button *ngIf="currentUser" class="reply-button" (click)="startReplyingTo(reply)"><span><i
+                  class="fa fa-reply"></i></span></button>
+              </div>
+            </div>
+            <div class="inner-reply">
+              <div *ngIf="isReplyingTo(reply) && isReplying">
+                <app-comment-input [user]="currentUser" [mediaId]="mediaId" [isReplying]="isReplying"
+                                   [replyingTo]="replyingTo" [parentCommentId]="reply.commentId"
+                                   [(isCommenting)]="isReplying"
+                                   (onCommentSubmit)="getComments()"></app-comment-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="comment-button" *ngIf="comments.length > 0 && comments.length > displayComments.length"
+            (click)="showMoreComments()">Show more
+    </button>
+  </div>
+</div>
+<div #accountModal class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Account required</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section *ngIf="!this.currentUser" class="modal-card-body">
+      You need an activated account to post comments
+    </section>
+    <section *ngIf="this.currentUser && !this.currentUser.isActivated" class="modal-card-body">
+      Your account needs to be activated
+    </section>
+    <footer class="modal-card-foot">
+      <button *ngIf="!currentUser" class="button is-doormonster-orange-hollow" routerLink="/account/create">Go create
+        one
+      </button>
+      <button *ngIf="currentUser && !currentUser.isActivated" class="button is-doormonster-orange-hollow"
+              routerLink="/account/edit">Check your account page
+      </button>
+      <button class="button" (click)="closeModal()">Cancel</button>
+    </footer>
+  </div>
+</div>

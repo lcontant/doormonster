@@ -1,0 +1,33 @@
+<div class="header">
+  <a class="logo" routerLink="/"></a>
+  <div class="navmenu">
+    <ul class="nav-list">
+      <li class="nav-item"><a class="nav-link" routerLink="/podcast">PODCASTS</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/creators">CREATORS</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/about">ABOUT</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/contact">CONTACT</a></li>
+    </ul>
+  </div>
+  <div class="searchbar-container">
+    <app-search (onMobileSearchButtonClick)="toggleLogo($event)"></app-search>
+  </div>
+  <div class="user-button">
+    <a *ngIf="currentUser == null" class="profile-image-container">
+      <i class="profile-image fa fa-user-circle" routerLink="/account/login"></i>
+    </a>
+    <a *ngIf="currentUser != null && profileNotLoaded" class="profile-image-container">
+      <i class="profile-image-connected fa fa-user-circle" routerLink="/account/login"></i>
+    </a>
+    <a *ngIf="currentUser && !profileNotLoaded" class="profile-image-container">
+      <img #userImage (error)="errorProfileLoading($event)" [src]="userImagePath"
+           class="profile-image"
+           height="30" routerLink="/account/edit" width="30"/>
+    </a>
+  </div>
+  <div (click)="sideBarToggle()" class="menu-button">
+    <a class=""><i class="has-text-white fa fa-bars"></i></a>
+  </div>
+  <div class="sidebar-section">
+    <app-sidebar class="sidebar-mobile"></app-sidebar>
+  </div>
+</div>

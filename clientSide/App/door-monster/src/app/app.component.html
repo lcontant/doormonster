@@ -1,0 +1,10 @@
+<app-header [(isSidebarToggled)]="sidebarToggled"></app-header>
+<div class="doormonster-container" (click)="onOutSideSideBarClick()">
+  <app-notification class="notification-section"></app-notification>
+  <router-outlet class="router-outlet"></router-outlet>
+  <app-sidebar class="sidebar"></app-sidebar>
+</div>
+<app-podcast-player></app-podcast-player>
+<app-help></app-help>
+<app-footer></app-footer>
+<app-mobile-nav></app-mobile-nav>

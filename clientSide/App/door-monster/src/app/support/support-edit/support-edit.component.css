@@ -1,0 +1,152 @@
+.unsubscribe-section {
+  padding-bottom: 15%;
+}
+.support-container {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.tab-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+}
+.selected-tier {
+  background: #c04b27;
+  border: none;
+  color: white;
+  display: grid;
+  padding: 1em;
+  min-height: 60px;
+  align-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.selected-tier:hover {
+  color: white;
+}
+
+.nav-item {
+  border: 2px solid #c04b27;
+  display: grid;
+  padding: 1em;
+  min-height: 60px;
+  align-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  background: #c04b27;
+  border: none;
+  color: white;
+}
+
+.discord-reward {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.discord-header-section {
+  border-radius: 25px 25px 50% 20%;
+  background-color: #7289DA;
+}
+
+.discord-content {
+  background-color: #2C2F33;
+  color: white;
+}
+
+.discord-link {
+  color: white;
+}
+
+.discord-link:visited {
+  color: white;
+}
+
+.discord-link:hover{
+  color: #d3a21e;
+}
+
+.dropbox-reward {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.discord-sync {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dropbox-content {
+  background-color: #0061ff;
+  color: white;
+}
+.dropbox-link {
+  color: white;
+}
+.dropbox-link:visited {
+  color: white;
+}
+
+.dropbox-link:hover {
+  color: #d3a21e;
+}
+
+.u
+
+@media only screen and (max-width: 768px) {
+
+  .tab-section {
+    grid-gap: 2em;
+  }
+
+  .nav-item {
+    font-size: 180%;
+  }
+
+  .dropbox-reward {
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .discord-reward {
+    width: 75%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .unsubscribe-section {
+    padding-top: 0%;
+  }
+}
+
+.upgrade-list {
+  list-style: none;
+}
+
+.upgrade-item {
+  border-bottom: solid #c04b27;
+}
+
+.upgrade-item:hover {
+  color:white;
+  background-color: #c04b27;
+}
+
+.upgrade-section {
+  margin-top: 50px;
+  width: 50%;
+  justify-items: right;
+  border-left: solid #c04b27;
+  border-top: solid #c04b27;
+  border-right: solid #c04b27;
+}

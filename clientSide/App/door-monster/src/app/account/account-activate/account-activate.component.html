@@ -1,0 +1,13 @@
+<div *ngIf="activationRequestSent">
+  <p *ngIf="isActivated">
+      Your account is activated !
+  </p>
+  <p *ngIf="!isActivated">
+      Authenticating...
+  </p>
+</div>
+<div *ngIf="!activationRequestSent">
+  <p>
+    We've sent you a link to activate your account check your inbox for it!
+  </p>
+</div>

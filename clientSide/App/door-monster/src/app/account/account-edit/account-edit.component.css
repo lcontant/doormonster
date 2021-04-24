@@ -1,0 +1,133 @@
+.account-settings {
+  grid-row-gap: 2em;
+  margin: 1.5em;
+}
+.account-settings-left, .account-settings-right {
+  grid-gap: 2em;
+}
+
+.feedback-text-input {
+  border-radius: 20px 20px 0px 20px;
+  padding: 1em;
+}
+
+.account-settings h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5em;;
+  margin-bottom: 0.5em;
+}
+
+.input-label {
+  text-align: left;
+  margin: 0 0 0 1em;
+}
+
+.input-field {
+  padding: 1em;
+}
+
+
+.error_field {
+  color: red;
+}
+
+
+.email-notifications label {
+
+}
+
+
+.patreon-section {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 50px);
+  grid-gap: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.password-edit-section {
+  display: grid;
+  grid-row-gap: 0.5em;
+}
+
+.reset-password-button {
+  margin-top: 1em;
+  height: 50px;
+}
+
+.development-info {
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+}
+
+.development-info p {
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+}
+
+.development-info ul {
+  text-align: left;
+}
+
+.suggestion-form-container {
+  margin-top: 1em;
+}
+
+.suggestion-form {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.suggestion-form textarea {
+  outline: none;
+  resize: vertical;
+  min-height: 100px;
+  max-height: 240px;
+  border: 1px solid #ccc;
+}
+
+
+@media only screen and (min-width: 1000px) {
+
+  .account-settings {
+    display: grid;
+    margin: 2em;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2em;
+  }
+
+  .account-settings-left {
+    display: grid;
+    grid-column-start: 1;
+  }
+  .account-settings-right {
+    display: grid;
+    grid-column-start: 2;
+  }
+
+  .development-info {
+    border: none;
+    padding: 0;
+  }
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+  .account-settings {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+  }
+
+  .development-info, .patreon-section {
+    margin: 0 10%;
+  }
+
+
+}
+
+.patreon-link:hover {
+  color:  #c04b27 !important;
+}

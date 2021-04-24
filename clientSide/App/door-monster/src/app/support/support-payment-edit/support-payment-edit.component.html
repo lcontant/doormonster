@@ -1,0 +1,17 @@
+<h1> Currently registered cards </h1>
+
+<div *ngIf="!supporterCardList">{{cardFetchingStatus}}</div>
+<div class="card-list">
+  <div *ngFor="let card  of supporterCardList">
+    <div class="card-item">
+      <h3 class="card-branding">{{card.brand}}</h3>|
+      <label class="card-number">**** **** **** {{card.last4}}</label>|
+      <label class="card-date">{{card.expMonth}} / {{card.expYear}}</label>
+      <div *ngIf="canDeleleteCards()" class="delete-button" (click)="deleteCard(card.id)"><i class="fa fa-trash"></i></div>
+    </div>
+  </div>
+</div>
+
+<div class="new-card-section">
+  <button class="hollow-button" (click)="onNewCardClick($event)">Add new card</button>
+</div>

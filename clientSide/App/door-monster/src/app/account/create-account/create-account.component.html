@@ -1,0 +1,33 @@
+<div class="content-box account-creation">
+  <h2 class="box-title">Create Your Account!</h2>
+  <input class="input-field" id="usernameInput" name="username" type="text" [(ngModel)]="user.username" placeholder="*Username"/>
+  <input class="input-field" id="passwordInput" type="password" [(ngModel)]="user.password" placeholder="*Password"/>
+  <p *ngIf="!passwordsAreTheSame()" class="error_field">Make sure the two passwords are the same</p>
+  <input class="input-field" id="passwordConfirmInput" type="password" [(ngModel)]="passwordConfirm" placeholder="*Confirm password">
+  <p *ngIf="!passwordsAreTheSame()" class="error_field">Make sure the two passwords are the same</p>
+  <input class="input-field" id="emailInput" type="email" [(ngModel)]="user.email" placeholder="*Email"/>
+  <br>
+  <div class="select-profile-image">
+    <label class="input-label profile-select-title" for="avatarInput">Choose a Profile Image</label>
+    <div class="file-container">
+      <label for="avatarInput">JPEG,PNG, GIF or BMP, under 100MB</label>
+      <input class="input-field profile-select-button" id="avatarInput" type="file" (change)="onAvatarChange($event)" name="avatarInput" accept="image/*">
+    </div>
+    <img onerror="this.src = '../../../assets/images/avatar_default.png'" [src]="currentImage" class="picked-avatar">
+  </div>
+  <p *ngIf="profileImageIsToBig()" class="error_field">Please choose an image smaller than 100MB</p>
+  <p class="error_field">{{errorMessage}}</p>
+  <div class="content-box"><h1>Terms of Service</h1>
+    <div class="TOS">
+      <app-terms-of-service [isEmbbeded]="true"></app-terms-of-service>
+    </div>
+    <div>
+      <input type="checkbox" [(ngModel)]="TOSAccepted"/>I accept the terms of service
+  </div>
+  </div>
+  <div>
+    <input type="checkbox" [(ngModel)]="ageRestrictionConfirmed"/>I confirm that I am over the age of 13
+  </div>
+  <button [disabled]="!formIsValid()" class="btn btn-default input-button center-button" (click)="create()">Create</button>
+  <p *ngIf="accountCreated" class="success">The account was created you can go login <a routerLink="/account/login">here</a></p>
+</div>

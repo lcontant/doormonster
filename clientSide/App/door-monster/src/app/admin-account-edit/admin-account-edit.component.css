@@ -1,0 +1,68 @@
+.user-info-container {
+  margin: 20px auto 0 auto;
+  max-width: 800px;
+}
+.normal-details-section {
+  display: grid;
+  grid-gap: 10px;
+  margin: 20px;
+}
+.user-form-item {
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+}
+.user-form-item-wide {
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+.profile-image {
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+    border: solid white 3px;
+    text-align: center;
+    color: lightgray;
+    background: white;
+    cursor: pointer;
+    outline: 0;
+    margin: auto 0;
+    align-self: center;
+    justify-self: center;
+  }
+  .file-select {
+}
+.BANBTN {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 1em;
+  outline: none;
+  border: 2px solid rgb(158, 0, 0);
+  margin-bottom: 20px;
+}
+  .BANBTN:hover {
+    cursor: pointer;
+    background: #ffffff;
+    border-color: red;
+    color: red;
+    font-weight: bold;
+  }
+
+  
+@media only screen and (min-width: 600px) {
+
+  .user-form-item {
+      grid-template-columns: 80px 1fr;
+  }
+  .user-form-item-wide {
+      grid-template-columns: 1fr min-content;
+  }
+  .input-label {
+  }
+  
+}

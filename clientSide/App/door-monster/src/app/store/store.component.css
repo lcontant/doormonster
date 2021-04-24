@@ -1,0 +1,137 @@
+  .store-container {
+      max-width: 400px;
+      margin: 0 auto;
+  }
+  
+  .store {
+    display: grid;
+    grid-gap: 1em;
+    padding: 1em;
+  }
+
+  .store-box {
+    display: grid;
+    padding: 1em;
+    min-height: 300px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+    -pie-box-shadow: 0px 0px 30px -18px rgba(0, 0, 0, 0.20);
+    background-color: #fff;
+  }
+
+  .dftba, .teespring {
+      grid-template-rows: min-content 1fr;
+      grid-gap: 1em;
+  }
+
+  .dftba-link, .teespring-link {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  }
+    .dftba-link:hover, .teespring-link:hover {
+        background-color: #c04b27;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .dftba-link {
+        background: url("../../assets/images/store-logo-dftba.png") no-repeat;
+        background-position: 0 center;
+        background-size: 200%;
+    }
+        .dftba-link:hover {
+            background-position: 100% center;
+        }
+
+    .teespring-link {
+        background: url("../../assets/images/store-logo-teespring.png") no-repeat;
+        background-position: 0 center;
+        background-size: 200%;
+    }
+        .teespring-link:hover {
+            background-position: 100% center;
+        }
+
+  .album {
+    display: grid;
+    grid-gap: 1em;
+  }
+
+  .album a {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    min-height: 70px;
+    border: 1px solid #ccc;
+  }
+    .album a:hover {
+        background-color: #c04b27;
+        border-color: #c04b27;
+    }
+
+  .store-itunes {
+    background: url("../../assets/images/albumlink-itunes.png") no-repeat;
+    background-position: 0 center;
+    background-size: 200%;
+  }
+    .store-itunes:hover {
+        background-position: 100% center;
+    }
+
+  .store-spotify {
+    background: url("../../assets/images/albumlink-spotify.png") no-repeat;
+    background-position: 0 center;
+    background-size: 200%;
+  }
+    .store-spotify:hover {
+        background-position: 100% center;
+    }
+
+  .store-amazon {
+    background: url("../../assets/images/albumlink-amazon.png") no-repeat;
+    background-position: 0 center;
+    background-size: 200%;
+  }
+    .store-amazon:hover {
+        background-position: 100% center;
+    }
+
+  .store-google {
+    background: url("../../assets/images/albumlink-google.png") no-repeat;
+    background-position: 0 center;
+    background-size: 200%;
+  }
+    .store-google:hover {
+        background-position: 100% center;
+    }
+
+@media only screen and (min-width: 600px) {
+
+    .store {
+        grid-gap: 2em;
+        padding: 2em;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .store-container {
+        display: grid;
+        align-content: center;
+        max-width: 1200px;
+        height: 100%;
+    }
+
+    .store {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+}

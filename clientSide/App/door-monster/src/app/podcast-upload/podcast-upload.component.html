@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-4">
+      <h1 class="title"> Podcast episode upload portal</h1>
+      <form>
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Episode title"
+                   [(ngModel)]="podcastEpisode.episodeName"
+                   name="episodeName">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Podcast series</label>
+          <div class="control has-text-centered">
+            <div class="select">
+              <select [(ngModel)]="podcastEpisode.podcast" name="podcastseries" (change)="onSeriesChange()">
+                <option *ngFor="let podcast of podcasts">
+                  {{podcast.podcastTitle}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button routerLink="/uploadPodcastSeries">Create a new series</button>
+        </div>
+        <div class="field">
+          <div class="file is-centered is-link has-name is-boxed">
+            <label class="file-label">
+              <input class="file-input" type="file" (change)="onAudioChanged($event)">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fa fa-file-audio-o"></i>
+                </span>
+                <span class="file-label">
+                  Episode audio file
+                </span>
+              </span>
+              <span class="file-name">
+               {{currentAudioFileName}}
+            </span>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="file is-centered is-link has-name is-boxed">
+            <label class="file-label">
+              <input class="file-input" type="file" (change)="onThumbnailChanged($event)">
+              <span class="file-cta">
+                 <span class="file-icon">
+                  <i class="fa fa-image"></i>
+                 </span>
+                 <span class="file-label">
+                  Episode thumbnail
+                 </span>
+              </span>
+              <figure class="image is-4by3">
+                <img class="thumbnail is-4by3" width="200" *ngIf="!thumbnailFile">
+                <img class="thumbnail is-4by3" width="200" *ngIf="thumbnailFile" [src]="currentThumbnail">
+              </figure>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Episode publish date</label>
+          <div class="control">
+            <input type="date" class="input" name="publishDate" [(ngModel)]="podcastEpisode.episodePublishDate">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Episode length</label>
+          <div class="control">
+            <input type="text" class="input" name="episodeLength" [(ngModel)]="podcastEpisode.episodeLength">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Episode keywords</label>
+          <div class="control">
+            <input type="text" class="input" name="episodeKeywords" [(ngModel)]="podcastEpisode.episodeKeywords">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Episode description</label>
+          <div class="control">
+            <input type="text" class="input" name="episodeDescription" [(ngModel)]="podcastEpisode.episodeDescription">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Episode Number</label>
+          <div class="control">
+            <input type="number" class="input" name="episodeNum" [(ngModel)]="podcastEpisode.episodeNum">
+          </div>
+        </div>
+        <div>
+          <button class="button is-info" (click)="uploadPodcast()">Upload <br/> <i class="fa fa-cloud-upload"></i>
+          </button>
+          <p class="error">{{errorMessage}}</p>
+          <p class="success">{{successMessage}}</p>
+          <p class="is-info">{{progressMessage}}</p>
+          <progress class="progress is-primary" [value]="uploadProgress" max="100">{{uploadProgress}}%</progress>
+        </div>
+      </form>
+      <br/>
+    </div>
+  </div>
+</div>

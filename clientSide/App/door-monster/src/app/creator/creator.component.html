@@ -1,0 +1,25 @@
+<div class="creator-container">
+  <div class="creator-message">
+    Door Monster TV will soon host films, series, podcasts, and videos from several other creators,
+    and you'll be able to explore each creator's content through this page. In the meantime,
+    if there are any existing online artists whose work you would like to see on this site, use the form below 
+    to tell us who they are and why you think they would be a good fit! We're looking for independent, 
+    high-quality productions made on relatively low budgets.
+  </div>
+  <div class="form-container">
+    <form class="feedbackForm" name="feedbackForm" (ngSubmit)="sendFeedback()">
+      <textarea [(ngModel)]="feedbackText" type="text" id="feedback_text" name="feedback_text" class="feedback-text-input" rows="2" cols="50"></textarea>
+      <button class="btn btn-default input-button center-button" type="submit">{{feedbackMessage}}</button>
+      <div *ngIf="requestSent">
+        <p>{{serverResponse}}</p>
+      </div>
+    </form>
+  </div>
+  <div #accountModal class="account-needed-popup">
+    <div class="modal-content">
+      <span (click)="closeModal()"  class="close">&times;</span>
+      <h1>You need an account to use this feature.</h1>
+      <button class="" (click)="GoToCreateAnAccount()">Sign Up!</button>
+    </div>
+  </div>
+</div>

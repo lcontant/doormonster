@@ -1,0 +1,10 @@
+<div class="podcasts-container is-centered">
+  <div class="podcast-covers is-clearfix">
+    <div *ngFor="let podcast of podcasts" [routerLink]="'/podcasts/series/' + podcast.podcastTitle">
+      <figure class="image is-128x129">
+        <img class="podcastArt" [src]="'https://s3.amazonaws.com/doormonster/assets/images/' + podcast.thumbnailPath">
+      </figure>
+      <h4 class="title is-4">{{podcast.podcastTitle}}</h4>
+    </div>
+  </div>
+</div>

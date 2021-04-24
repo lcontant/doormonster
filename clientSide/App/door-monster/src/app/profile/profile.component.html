@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="columns" *ngIf="currentUser">
+    <div class="column is-half-desktop is-full-mobile">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-128x128">
+                <img class="user-avatar is-rounded"
+                     onerror="this.src = 'https://s3.amazonaws.com/doormonster/assets/images/avatar_default.png'"
+                     [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + currentUser.avatar ">
+            </figure>
+          </div>
+          <div class="media-content">
+            <h1 class="title">{{currentUser.getDisplayName()}}</h1>
+            <h1 class="title is-3">{{currentUser.location}}</h1>
+          </div>
+        </div>
+    </div>
+    <div class="column is-half-desktop is-full-mobile">
+      <app-comments [userId]="currentUserId"></app-comments>
+    </div>
+  </div>
+</div>

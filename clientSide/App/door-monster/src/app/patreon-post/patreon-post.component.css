@@ -1,0 +1,25 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: block;
+  background: white;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+
+.card-title {
+  background: #248bc8;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.post-feed {
+  background: #131c6d;
+}

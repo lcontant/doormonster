@@ -1,0 +1,45 @@
+<div *ngIf="video">
+  <app-video-player (videoEndend)="onVideoEnded()" [autoPlayEnabled]="autoPlayEnabled"
+                    [video]="video"></app-video-player>
+  <div class="video-content">
+    <div class="video-info">
+      <h2 class='video-title'>{{video.videoTitle}}</h2>
+      <h2 class='view-count'>{{video.views}} views</h2>
+      <h4 class='video-data'>{{video.videoSeries}} | {{video.videoPublishDate|  date:'fullDate':'+0600'}} <span
+        class="view-count-small">| {{video.views}} views</span></h4>
+    </div>
+    <div class="columns is-mobile">
+      <div class="column">
+        <div class="button is-white field is-pulled-left">
+          <input id="autoplaySwitch" type="checkbox" name="autoPlayExample" class="switch" [(ngModel)]="autoPlayEnabled">
+          <label for="autoplaySwitch">Autoplay</label>
+        </div>
+      </div>
+      <div class="column">
+        <div class="is-pulled-right">
+          <button id="reversePlaylist" (click)="reversePlaylist()" class="button is-white">
+            <span class=""><i class="reverse-order fa fa-exchange"></i></span>
+            <span>reverse playlist</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class='container playlist'>
+      <div (click)="clickLeft()" class='leftButton prevVideo'></div>
+      <div class='videoListContainer'>
+        <ul #List class='videoList'>
+          <li *ngFor="let video of relatedVideos" [class]="video.videoID + ' videoLinkCompact'">
+            <a [routerLink]="'/videos/' + video.videoID" [title]="video.videoTitle" routerLinkActive="active">
+              <img [alt]="video.videoTitle" [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + video.videoThumbnail"
+                   border='0'/><br/>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div (click)="clickRight()" class='rightButton nextVideo'></div>
+    </div>
+    <div class='comments'>
+      <app-comments [mediaId]="video.id"></app-comments>
+    </div>
+  </div>
+</div>

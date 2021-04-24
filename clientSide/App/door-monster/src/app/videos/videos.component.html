@@ -1,0 +1,46 @@
+<div *ngIf="loadingService.isLoading" class="videoBlock">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!loadingService.isLoading">
+  <div class="" >
+    <div *ngIf="series" class="columns">
+      <div class="column is-half"[routerLink]="'/series/' + series[0].textId">
+        <figure class="has-background-dark image is-16by9">
+          <img class="series-poster" [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/banner_' + series[0].textId + '.jpg'"/>
+        </figure>
+      </div>
+      <div class="column is-half">
+        <app-video-player [isEmbeded]="true" [video]="videos[0]"></app-video-player>
+      </div>
+    </div>
+  </div>
+  <h1 class="title">Latest videos</h1>
+  <ul class="pure-g ">
+    <li *ngFor="let video of videos" class="video-element pure-u-1-2 pure-u-lg-1-8">
+      <a class="videoLink-link" [routerLink]="'/videos/' + video.videoID" [title]="video.videoTitle">
+        <figure class="image is-16by9">
+          <img class="is-square"
+               [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + sanitizePath(video.videoThumbnail)"
+               [alt]="video.videoTitle" border="0"></figure>
+        <span [class]="'videoInfo ' + video.videoID">{{shortenTitle(video.videoTitle)}}</span>
+      </a>
+    </li>
+  </ul>
+  <h1 class="title">Some more content</h1>
+  <div class="videoBlock" *ngFor="let series of videoSeries">
+    <h2><a [routerLink]="'/series/' + series.series.textId" class="videoBlock-title">{{series.series.title}} <i
+      class="fa fa-angle-right"></i></a></h2>
+    <ul class="pure-g ">
+      <li *ngFor="let video of series.videos" class="video-element pure-u-1-2 pure-u-lg-1-8">
+
+        <a class="videoLink-link" [routerLink]="'/videos/' + video.videoID" [title]="video.videoTitle">
+          <figure class="image is-16by9">
+            <img class="is-square"
+                 [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + sanitizePath(video.videoThumbnail)"
+                 [alt]="video.videoTitle" border="0"></figure>
+          <span [class]="'videoInfo ' + video.videoID">{{shortenTitle(video.videoTitle)}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

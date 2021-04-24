@@ -1,0 +1,7 @@
+<div class="video-container">
+  <div [class]="isEmbeded ? '' : 'video-responsive'">
+    <video *ngIf="video.videoFileLink" id="player" [poster]="posterUrl" controls>
+      <source [src]="nativeVideoUrl" type="video/mp4">
+    </video>
+  </div>
+</div>

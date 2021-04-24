@@ -1,0 +1,64 @@
+<div class="video-form-container">
+  <h1>Upload Video</h1>
+  <form class="video-form">
+    <div class="video-form-item">
+      <label class="input-label" for="VimeoID">Vimeo ID:</label>
+      <input class="input-field" type="text" [(ngModel)]="video.videoID" id="VimeoID" name="VimeoID">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="TitleInput">Video Title:</label>
+      <input class="input-field" type="text" id="TitleInput" name="TitleInput" [(ngModel)]="video.videoTitle">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="SeriesDropDown">Series Title:</label>
+      <select class="input-field" id="SeriesDropDown" name="series" [(ngModel)]="seriesId">
+        <option *ngFor="let series of seriesList" [value]="series.id">{{series.title}}</option>
+      </select>
+    </div>
+    <button (click)="addSeries()">+</button>
+    <label class="input-label">
+      Related series
+    </label>
+    <ul>
+      <li *ngFor="let itSeries of chosensSeries">{{itSeries.title}} <button class="is-danger" (click)="removeSeries(itSeries)">remove</button></li>
+    </ul>
+    <button routerLink="/uploadVideoSeries">Create a new series</button>
+    <div class="video-form-item">
+      <label class="input-label" for="categoriesDropdown">Video Category:</label>
+      <select class="input-field" id="categoriesDropdown" [(ngModel)]="video.videoCategory" name="categories">
+        <option *ngFor="let category of categoriesNames" [value]="category">{{category}}</option>
+      </select>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="newCategoryInput">OR New Category:</label>
+      <input class="input-field" type="text" id="newCategoryInput" name="newCategory" [(ngModel)]="video.videoCategory">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="summaryInput">Video Summary:</label>
+      <textarea id="summaryInput" rows="5" name="summaryInput" [(ngModel)]="video.videoSummary"></textarea>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="keywordsInput">Video Keywords:</label>
+      <input class="input-field" type="text" id="keywordsInput" name="keywordsInput" [(ngModel)]="video.videoKeyWords"/>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="PublishDateInput">Publish Date:</label>
+      <input class="input-field" type="date" [(ngModel)]="video.videoPublishDate" id="PublishDateInput" name="PublishDateInput"/>
+    </div>
+    <div class="video-form-item-wide">
+      <label class="input-label" for="thumbnailInput">Thumbnail</label>
+      <input class="file-select" id="thumbnailInput" type="file" (change)="onThumbnailChanged($event)">
+      <img class="thumbnail" *ngIf="!thumbnailFile">
+      <img class="thumbnail" *ngIf="thumbnailFile" [src]="currentThumbnail">
+    </div>
+    <div>
+      <label class="input-label" for="videoFileInput">Video file</label>
+      <input class="file-select" type="file" (change)="onVideoFileChanged($event)" id="videoFileInput">
+    </div>
+    <button class="video-form-item btn btn-default input-button center-button" type="submit" (click)="uploadVideoData()">Upload</button>
+    <p class="error">{{errorMessage}}</p>
+    <p class="success">{{successMessage}}</p>
+    <p class="is-info">{{progressMessage}}</p>
+    <progress class="progress is-primary" [value]="uploadProgress" max="100">{{uploadProgress}}%</progress>
+  </form>
+</div>

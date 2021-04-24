@@ -1,0 +1,12 @@
+<div *ngIf="audioSource" class="columns player-container is-mobile">
+  <div class="column is-10">
+    <audio class="audio-player" #audioPlayer controls>
+      <source [src]="audioSource">
+    </audio>
+  </div>
+  <div class="column is-1">
+    <button class="button round-button" (click)="close()">
+      <i class="fa fa-remove"></i>
+    </button>
+  </div>
+</div>

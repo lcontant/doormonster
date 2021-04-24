@@ -1,0 +1,147 @@
+<div class="support-container">
+  <div class="support">
+    <h1>Subscribe to DMTV</h1>
+    <p class="summary">Door Monster is almost entirely fan-funded, and we want to keep it that way, ideally with no site
+      ads. You can help Door Monster continue
+      making the content you love, and gain bonus perks in the process!
+      All payments made on DMTV are submitted via Stripe, which means we don't recieve or store your payment information
+      in any way. Alternatively, you can also donate and recieve the same rewards on <a
+        href="https://patreon.com/doormonster">Patreon.com</a>.
+    </p>
+    <div class="tab-section">
+      <a [ngClass]="this.currentTierUpgradeIndex == 0 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(0)">$1</a>
+      <a [ngClass]="this.currentTierUpgradeIndex == 1 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(1)">$5</a>
+      <a [ngClass]="this.currentTierUpgradeIndex == 2 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(2)">$10</a>
+      <a [ngClass]="this.currentTierUpgradeIndex == 3 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(3)">$20</a>
+      <a [ngClass]="this.currentTierUpgradeIndex == 4 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(4)">$50</a>
+      <a [ngClass]="this.currentTierUpgradeIndex == 5 ? 'selected-tier': 'nav-item'" (click)="setActiveTab(5)">$500</a>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(0)">
+      <h1>$1/month</h1>
+      <p>
+        In addition to helping Door Monster make weekly videos, $1 a month grants you access to the Door Monster
+        community Discord server. You'll also be first in line for special live streams and other events.
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(1)">
+      <h1>$5/month</h1>
+      <p>
+        In addition to helping Door Monster make weekly videos and all rewards from lower tiers, $5 a month grants you
+        access to exclusive DMTV content, including a bi-monthly half-hour podcast and the full-length cut of The Guards
+        Themselves.
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(2)">
+      <h1>$10/month</h1>
+      <p>
+        In addition to all previous rewards, you'll receive early access to video uploads on DoorMonster.tv, a monthly
+        discount code for our t-shirts over at TeeSpring.com, and access to digital PDFs of the previous month's
+        scripts.
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(3)">
+      <h1>$20/month</h1>
+      <p>
+        In addition to all previous rewards, you will be credited at the end of our sketches for each month that you
+        remain a patron on this tier.
+      </p>
+      <p>
+        This includes a graphic credit during the end plate and a text credit in the description. You may add a link to
+        anything of your choosing to the text credit - your channel, website, whatever. Just let us know via private
+        message!
+      </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(4)">
+      <h1>$50/month</h1>
+      <p>In addition to all previous rewards, you can request one personalized video message from the crew per month -
+        this can be a happy birthday, a congratulations, or another message of your choosing. Just send us your request
+        here on Patreon or via Discord! </p>
+    </div>
+    <div class="description-section" *ngIf="isActiveTab(5)">
+      <p>If you find it in your heart to donate this ridiculous amount of money, then you're already a better person
+        than
+        any of us. Come join us for lunch and we'll let you in on one of
+        our weekly Community Comments videos! Travel arrangements are up to you,
+        and this reward is limited to one use per person.</p>
+    </div>
+  </div>
+  <br>
+  <button class="btn btn-default input-button hollow-button" [disabled]="!canSwitchTiers()" (click)="toggleModal()">
+    Upgrade
+  </button>
+</div>
+<hr>
+<div class="rewards-section columns">
+  <div class="column is-4">
+
+  </div>
+  <div class="column is-4">
+    <div>
+      <h1 class="title" *ngIf="currentSupporter">{{currentSupporter.ammount / 100}}$ Tier</h1>
+    </div>
+    <div class="discord-reward" *ngIf="canSeeTheDiscordLink()">
+      <div class="discord-content card">
+        <div class="discord-header-section"><h1>
+          <img src="https://discordapp.com/assets/1c8a54f25d101bdc607cec7228247a9a.svg" width="50" height="50">
+          The discord link
+        </h1></div>
+        <h3>Come hang out with us</h3>
+        <h4 class=""><a class="discord-link" href="https://discord.gg/yjtdJDz">By clicking here</a></h4>
+      </div>
+    </div>
+    <div class="discord-sync">
+      <a class="button card"
+         href="https://discordapp.com/api/oauth2/authorize?client_id=573124024331403275&redirect_uri=https%3A%2F%2Fwww.doormonster.tv%2Fdiscord%2Fredirect&response_type=code&scope=identify">Connect
+        your account to discord(Beta)</a>
+    </div>
+    <div class="dropbox-reward" *ngIf="canSeeScript()">
+      <div class="dropbox-content card">
+        <h1>Scripts</h1>
+        <h3>Here is the link to the scripts</h3>
+        <h4><a class="dropbox-link" href="https://www.dropbox.com/sh/l65p9pfor9k79io/AADj9_ItSHq5KSEqUnSyt1Kza?dl=0">Get
+          them here</a></h4>
+      </div>
+    </div>
+    <div class="">
+      <button class="hollow-button" routerLink="/manage/payment">Manage payment method</button>
+    </div>
+  </div>
+</div>
+
+<br/>
+<div class="unsubscribe-section">
+  <button *ngIf="shouldSeeUnsubscribe()" class="btn btn-default input-button center-button update-button"
+          (click)="unsubscribe()">Cancel subscription
+  </button>
+  <button *ngIf="shouldSeeRenewSubscription()" class="btn btn-default input-button center-button update-button"
+          (click)="renew()">Renew subscription
+  </button>
+  <p *ngIf="shouldSeeRenewSubscription() && periodEnd">
+    You have Canceled your subscription. You will have access to this page until {{periodEnd}}
+    If you want to keep your subscription active, renew your subscription by clicking on the button above
+  </p>
+  <p>
+    <label class="error" *ngIf="!unsubscribedWorked && unsubscribeServerResponse">{{unsubscribeServerResponse}}</label>
+    <label class="success" *ngIf="unsubscribedWorked && unsubscribeServerResponse">{{unsubscribeServerResponse}}</label>
+  </p>
+  <a class="support" href="http://patreon.com/DoorMonster">Use Patreon Instead</a>
+</div>
+<div class="modal" [ngClass]="isShowingConfirmationModal ? 'is-active' : ''">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Tier change confirmation</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      your next donation of {{this.tierAmounts[this.currentTierUpgradeIndex] / 100}}$ will be automatically charged
+      on  {{periodEnd}}
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-doormonster-orange-hollow" (click)="upgradeSubscription(this.currentTierUpgradeIndex)">
+        Confirm
+      </button>
+      <button class="button" (click)="toggleModal()">Cancel</button>
+    </footer>
+  </div>
+</div>

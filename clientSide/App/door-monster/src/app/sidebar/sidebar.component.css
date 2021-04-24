@@ -1,0 +1,244 @@
+.sidebar-content, .nav-link {
+  color: #c04b27;
+}
+
+.liveLink {
+  display: block;
+  background: #6c2498;
+  color: #fff;
+}
+  .liveLink:visited {
+    color: #fff;
+  }
+  .liveLink:hover {
+    background: #9865b7;
+  }
+
+.sideLinks {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sideLinks li {
+  border-bottom: 1px solid #ccc;
+}
+
+.sideLinks li a {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+  .sideLinks li a:hover {
+    background: #ccc;
+    color: #fff;
+    font-weight: bold;
+  }
+
+.mobilenav {
+  display: none;
+}
+
+.instagram-widget {
+  display: none;
+}
+
+.snLinks {
+  display: none;
+}
+
+.snLinks-mobile, .snLinks-mobile-compact {
+  margin-top: 20px;
+}
+
+.snLinks-mobile a, .snLinks-mobile-compact a {
+  color: #666;
+}
+  .snLinks-mobile a:hover, .snLinks-mobile-compact a:hover {
+    color: #d3a21e;
+  }
+
+.snLinks-mobile {
+  display: none;
+}
+
+.support {
+  display: none;
+}
+
+.copyright, .TOS-link, .snLinks-mobile-compact {
+  font-size: 75%;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+}
+
+.copyright {
+  color: #666;
+}
+
+
+@media only screen and (min-width: 600px) {
+
+  .snLinks-mobile {
+    display: block;
+  }
+
+  .snLinks-mobile-compact {
+    display: none;
+  }
+
+}
+@media only screen and (min-width: 900px) {
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }      
+
+    .liveLink {
+      font-size: 200%;
+      font-weight: bold;
+      line-height: 80px;
+      background: #6c2498 url("../../assets/images/twitchlogo.png") no-repeat center;
+      border: 4px solid #9865b7;
+      text-align: center;
+      margin: 10px;
+    }
+      .liveLink:hover {
+        color: #6c2498;
+        border-color: #6c2498;
+        background: #fff;
+      }
+  
+    .livelink-link {
+      color: #fff;
+    }
+    
+    .sideLinks {
+      margin: 5px 10px;
+    }
+
+    .sideLinks li {
+      border: none;
+    }
+
+    .mobilenav {
+      display: block;
+    }
+
+    .mobilesidebar {
+      display: none;
+    }
+  
+    .sideLinks li a {
+      display: inline-block;
+      height: 40px;
+      width: calc(100% - 4px);
+      line-height: 40px;
+      font-size: 150%;
+      font-weight: bold;
+      border: 2px solid #ccc;
+      background-color: #fff;
+      margin: 5px 0;
+    }
+    
+    .sideLinks li a:hover {
+      border-color: #d3a21e;
+      background: #fff;
+      color: #d3a21e;
+    }
+  
+    .instagram-widget {
+      display: block;
+      border: 0;
+      overflow: visible;
+      height: 225px;
+      margin: 10px;
+    }
+  
+    .snLinks {
+      display: block;
+      margin: 10px;
+      padding: 0;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-flow: row wrap;
+    }
+      .snLinks li a {
+        float: left;
+        background: url(../../assets/images/snLinks2.png);
+        height: 40px;
+        width: 40px;
+      }
+      .snLinks li .YT {
+        background-position: 120px -40px;
+      }
+      .snLinks li .YT:hover {
+        background-position: 120px 0;
+      }
+      .snLinks li .TW {
+        background-position: 160px -40px
+      }
+      .snLinks li .TW:hover {
+        background-position: 160px 0;
+      }
+      .snLinks li .FB {
+        background-position: 0 -40px;
+      }
+      .snLinks li .FB:hover {
+        background-position: 0 0;
+      }
+      .snLinks li .RD {
+        background-position: 40px -40px;
+      }
+      .snLinks li .RD:hover {
+        background-position: 40px 0;
+      }
+      .snLinks li .RSS {
+        background-position: 80px -40px;
+      }
+      .snLinks li .RSS:hover {
+        background-position: 80px 0;
+      }
+    .snLinks-mobile {
+      display: none;
+    }
+    .support {
+      display: block;
+      margin: 0 0 10px 10px;
+      background: #c04b27;
+      height: 40px;
+      line-height: 40px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .support:visited {
+      color: #fff;
+    }
+    .support:hover {
+      color: #d3a21e;
+      background: #fff;
+    }
+    .snLinks li .YT:hover, .snLinks li .TW:hover, .snLinks li .FB:hover, .snLinks li .RD:hover, .snLinks li .RSS:hover, .support:hover {
+      -webkit-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.60);
+      -moz-box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.60);
+      box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.60);
+      -pie-box-shadow: 0px 0px 1px -18px rgba(0,0,0,0.60);
+    }
+    .copyright, .TOS-link {
+      display: none;
+    }
+
+  }
+  
+  @media only screen and (min-width: 1200px) {
+  
+    .altnav {
+      display: none;
+    }
+  
+  }

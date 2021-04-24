@@ -1,0 +1,17 @@
+<form class="content-box login-form">
+  <input class="input-field" id="usernameInput" name="username" type="text" [(ngModel)]="user.username" placeholder="Username"/>
+  <input class="input-field" name="password" id="passwordInput" type="password" [(ngModel)]="user.password" placeholder="Password"/>
+  <div class="row top-buttons">
+    <button type="submit" class="btn btn-default input-button left-button"
+            [disabled]="!user.username || !user.password" (click)="signIn()">Sign In
+    </button>
+    <button type="button" name="passwordRecovery" class="btn btn-default input-button right-button" routerLink="/account/passwordReset">Forgot Password?
+    </button>
+  </div>
+  <span class="error">{{errorMessage}}</span>
+  <div class="no-account">
+    Don't have an account?
+    <input type="text" name="fax-field" class="fax-field" [(ngModel)]="botValue" tabindex="-1" autocomplete="off">
+    <button type="button" class="btn btn-default signup-button" routerLink="/account/create">Sign Up!</button>
+  </div>
+</form>

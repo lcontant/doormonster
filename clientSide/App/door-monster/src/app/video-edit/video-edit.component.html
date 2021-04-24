@@ -1,0 +1,63 @@
+<div class="video-form-container">
+  <h1>Update Video Info</h1>
+<form class="video-form">
+    <div class="video-form-item">
+      <label class="input-label" for="VimeoID">Vimeo ID:</label>
+      <input class="input-field" type="text" [(ngModel)]="video.videoID" id="VimeoID" name="VimeoID">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="TitleInput">Video Title:</label>
+      <input class="input-field" type="text" id="TitleInput" name="TitleInput" [(ngModel)]="video.videoTitle">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="SeriesDropDown">Series Title:</label>
+      <select class="input-field" id="SeriesDropDown" name="series" >
+        <option *ngFor="let name of seriesNames" [value]="name">{{name}}</option>
+      </select>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="customSeries">OR New Series:</label>
+      <input class="input-field" type="text" name="customSeries" id="customSeries" >
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="categoriesDropdown">Video Category:</label>
+      <select class="input-field" id="categoriesDropdown" [(ngModel)]="video.videoCategory" name="categories">
+        <option *ngFor="let category of categoriesNames" [value]="category">{{category}}</option>
+      </select>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="newCategoryInput">OR New Category:</label>
+      <input class="input-field" type="text" id="newCategoryInput" name="newCategory" [(ngModel)]="video.videoCategory">
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="summaryInput">Video Summary:</label>
+      <textarea id="summaryInput" rows="5" name="summaryInput" [(ngModel)]="video.videoSummary"></textarea>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="keywordsInput">Video Keywords:</label>
+      <input class="input-field" type="text" id="keywordsInput" name="keywordsInput" [(ngModel)]="video.videoKeyWords"/>
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="PublishDateInput">Publish Date:</label>
+      <input class="input-field" type="date" [(ngModel)]="currentDate" id="PublishDateInput" name="PublishDateInput" />
+    </div>
+    <div class="video-form-item">
+      <label class="input-label" for="prePathInput">Thumnail Path:</label>
+      <input class="input-field" type="text" id="prePathInput" name="prePathInput" [(ngModel)]="prePath">
+    </div>
+    <div class="video-form-item-wide">
+      <input class="file-select" type="file" (change)="onThumbnailChanged($event)">
+      <img class="thumbnail" *ngIf="!thumbnailFile" [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + video.videoThumbnail" >
+      <img class="thumbnail" *ngIf="thumbnailFile" [src]="currentThumbnail">
+    </div>
+    <div class="video-form-item">
+      <input class="file-select" type="file" (change)="onVideoFileChanged($event)">
+    </div>
+    <button class="video-form-item btn btn-default input-button center-button" type="submit" (click)="edit()">Update</button>
+  <p class="error">{{errorMessage}}</p>
+  <p class="success">{{successMessage}}</p>
+  <p class="is-info">{{progressMessage}}</p>
+  <progress class="progress is-primary" [value]="uploadProgress" max="100">{{uploadProgress}}%</progress>
+</form>
+  <button class="video-form-item btn is-danger" type="button" (click)="delete()">Delete the video</button>
+</div>

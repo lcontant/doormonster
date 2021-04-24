@@ -1,0 +1,46 @@
+<div class="account-edit-info-section">
+  <div class="email-notifications-container">
+    <div class="email-notifications">
+      <input [(ngModel)]="user.isSubscribedToEmailNotifications" name="emailNotificationInput" type="checkbox">
+      <label class="input-label">Receive email notifications about new content</label>
+    </div>
+  </div>
+  <h2>Account Info</h2>
+  <label class="input-label" for="usernameInput">Username</label>
+  <input [(ngModel)]="user.username" class="input-field" id="usernameInput" name="username" type="text"/>
+  <label class="input-label" for="locationInput">Location</label>
+  <input [(ngModel)]="user.location" class="input-field" id="locationInput" type="text"/>
+  <label class="input-label" for="emailInput">Email</label>
+  <input [(ngModel)]="user.email" class="input-field" id="emailInput" type="email">
+  <label class="input-label" for="fullnameInput">fullname</label>
+  <input [(ngModel)]="user.fullname" class="input-field" id="fullnameInput" type="text">
+  <label class="input-label" for="useFullNameInput">Use fullname as display name</label>
+  <input [(ngModel)]="user.useFullName" id="useFullNameInput" class="input-field" type="checkbox">
+  <div class="avatar-edit-section">
+    <figure class="image is-128x128">
+      <img *ngIf="!currentImage" [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + user.avatar "
+           class="is-rounded picked-avatar"
+           onerror="this.src = '../../../assets/images/avatar_default.png'">
+      <img *ngIf="currentImage" [src]="currentImage" class="is-rounded picked-avatar">
+    </figure>
+    <label class="input-label profile-select-title" for="avatarInput">Change Avatar</label>
+    <div class="file-container">
+      <label for="avatarInput">jpg, gif, png, bmp under 100MB</label>
+      <input (change)="onAvatarChange($event)" accept="image/*" class="profile-select-button" id="avatarInput"
+             type="file">
+    </div>
+  </div>
+  <p *ngIf="profileImageIsToBig()" class="error_field">The image is to big</p>
+  <p *ngIf="userUpdateRequestSent && userUpdateRequestSuccessfull" class="success">The account was updated!</p>
+  <p *ngIf="userUpdateRequestSent && !userUpdateRequestSuccessfull"
+     class="error_field">{{userUpdateErrorMessage}}</p>
+  <p *ngIf="userUpdateRequestSent && waitingForUserUpdateAnswer">Sending the info to the server</p>
+  <p *ngIf="userUpdateRequestSent && !userUpdateRequestSuccessfull" class="error">{{userUpdateResult}}</p>
+
+  <div class="update-buttons">
+    <button (click)="edit()" [disabled]="!formIsValid()"
+            class="btn btn-default input-button center-button update-button">Update
+    </button>
+    <button (click)="logout()" class="btn btn-default input-button center-button logout-button">Logout</button>
+  </div>
+</div>

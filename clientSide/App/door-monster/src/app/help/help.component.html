@@ -1,0 +1,23 @@
+<button class="button floating-button" (click)="toggleModal()">
+  <span class="desktop-only">Report a bug</span>
+
+  <i class="fa fa-bug fa-fw"></i>
+</button>
+<div class="modal" #reportModal>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Bug report</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form (submit)="sendReport()">
+        <h3 class="title is-4">Tell us what happened and we'll get to fixing it as as soon as possible</h3>
+        <textarea class="textarea" [(ngModel)]="bugReport" name="bugReport">
+        </textarea>
+        <button [disabled]="submitButtonDisabled" class="input-button" [ngClass]="submitButtonClass">{{submitButtonMessage}}</button>
+      </form>
+    </section>
+  </div>
+</div>

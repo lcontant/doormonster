@@ -1,0 +1,52 @@
+<div class="sidebar-content">
+  <a class="nav-link liveLink" routerLink="/live">Watch Live!</a>
+  <ul class="sideLinks">
+    <li class="altnav mobilenav"><a class="nav-link" routerLink="/">Videos</a></li>
+    <li class="altnav mobilenav"><a class="nav-link" routerLink="/podcast">Podcasts</a></li>
+    <li class="altnav mobilenav"><a class="nav-link" routerLink="/creators">Creators</a></li>
+    <li class="altnav"><a class="nav-link" routerLink="/about">About</a></li>
+    <li class="altnav"><a class="nav-link" routerLink="/contact">Contact</a></li>
+    <li><a class="nav-link" routerLink="/store">Store</a></li>
+    <li><a class="nav-link" href="http://doormonster.wiki">Wiki</a></li>
+    <li><a class="nav-link" href="https://tvtropes.org/pmwiki/pmwiki.php/WebVideo/DoorMonster">TV Tropes</a></li>
+    <li class="mobilesidebar"><a class="nav-link" href="http://patreon.com/DoorMonster">Patreon</a></li>
+    <li class="mobilesidebar"><a class="nav-link" routerLink="/termsofservice">Terms of Service</a></li>
+    <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/admin">Admin</a></li>
+    <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/upload">Upload</a></li>
+    <li *ngIf="isAdmin()"><a class="nav-link" routerLink="/uploadPodcast">Upload Podcast</a></li>
+  </ul>
+  <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+  <iframe  src="//lightwidget.com/widgets/570353437a2e5984b30634acf238c410.html" scrolling="no" allowtransparency="true" class="lightwidget-widget instagram-widget">
+  </iframe>
+  <ul class="snLinks">
+    <li><a href="https://www.youtube.com/c/DoorMonster" class="YT" title="Youtube"></a></li>
+    <li><a href="https://twitter.com/DoorMonster" class="TW" title="Twitter"></a></li>
+    <li><a href="https://www.facebook.com/DoorMonster" class="FB" title="Facebook"></a></li>
+    <li><a href="https://reddit.com/r/DoorMonster" class="RD" title="Reddit"></a></li>
+    <li><a href="http://doormonster.tv/feed" class="RSS" title="RSS Feed"></a></li>
+  </ul>
+  <a *ngIf="currentUser" class="support" routerLink="/checkout">SUPPORT DOOR MONSTER!</a>
+  <a *ngIf="!currentUser" class="support" routerLink="/account/login">SUPPORT DOOR MONSTER!</a>
+  <div class="snLinks-mobile-compact">
+    <a href="https://www.youtube.com/c/DoorMonster">YT</a> | 
+    <a href="https://twitter.com/DoorMonster">TW</a> | 
+    <a href="https://www.facebook.com/DoorMonster">FB</a> | 
+    <a href="https://reddit.com/r/DoorMonster">RD</a> | 
+    <a href="https://www.instagram.com/doormonster">IG</a> | 
+    <a href="http://doormonster.tv/feed">RSS</a>
+  </div>
+  <div class="snLinks-mobile">
+    <a href="https://www.youtube.com/c/DoorMonster">Youtube</a> | 
+    <a href="https://twitter.com/DoorMonster">Twitter</a> | 
+    <a href="https://www.facebook.com/DoorMonster">Facebook</a> | 
+    <a href="https://reddit.com/r/DoorMonster">Reddit</a> | 
+    <a href="https://www.instagram.com/doormonster">Instagram</a> | 
+    <a href="http://doormonster.tv/feed">RSS</a>
+  </div>
+  <div title="FINCHLEY CENTRAL" class="copyright">
+    © {{getDate()}} DOOR MONSTER ENTERTAINMENT
+  </div>
+  <div class="TOS-link">
+    <a routerLink="/termsofservice">TERMS OF SERVICE</a>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="contact-container">
+  <div class="contact">
+    <form class="contactForm" name="contact">
+      <h1>Send us something nice!</h1>
+      <input class="input-field" [(ngModel)]="sender"  type="text" name="name" required placeholder="Name"/>
+      <p class="error" *ngIf="senderError">You haven't put a name in</p>
+      <input class="input-field" [(ngModel)]="email" type="email" name="email" required placeholder="Email Address"/>
+      <p class="error" *ngIf="emailError">You did put an email in</p>
+      <textarea [(ngModel)]="body" cols="20" rows="6" name="comments"  required placeholder="Message"></textarea>
+      <p class="error" *ngIf="bodyError">You didn't put anything in your email</p>
+  <button class="btn btn-default input-button center-button" (click)="sendEmail()" type="button" >{{sendingButtonValue}}</button>
+      <p *ngIf="emailResponseReceived" [ngClass]="emailSuccess ? 'success': 'error'">{{emailSendingResponse}}</p>
+    </form>
+    <div class="poBox-column">
+        <h4 class="poBox">Want to mail us something instead?<br />
+          <br/>
+          Door Monster Entertainment<br/>
+          10410 Perrin Beitel Rd #65107 San Antonio, TX 78284, U.S.A. </h4>
+        <img class="contact-art" src="../../assets/images/gary.jpg" />
+    </div>
+  </div>
+</div>

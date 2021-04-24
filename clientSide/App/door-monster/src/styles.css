@@ -1,0 +1,420 @@
+/* You can add global styles to this file, and also import other style files */
+@charset "utf-8";
+
+html {
+  height: 100%;
+  background: #872708;
+}
+
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url('assets/fonts/GOTHIC.TTF');
+}
+
+body {
+  color: #FFF;
+  background: #fff;
+  height: calc(100% - 60px);
+  font-family: Century Gothic, Arial, Helvetica, sans-serif !important;
+  font-size: 0.9em;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+a:link {
+  color: #FFF;
+  text-decoration: none;
+}
+.desktop-only {
+  display:none;
+}
+
+.hover-cursor-pointer:hover {
+  cursor: pointer;
+}
+.card {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 25px;
+  margin: 10%;
+}
+
+
+.button.is-doormonster-orange-hollow {
+  background-color: #c04b27;
+  color: white;
+}
+
+.button.is-doormonster-orange-hollow:hover {
+  background-color: white;
+  color: #c04b27;
+}
+
+a:visited {
+  color: #FFF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1, h2 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.is-removed {
+  displaY: none !important;
+}
+
+/* Template */
+
+.router-outlet {
+  display: none;
+}
+
+.doormonster-container {
+  display: block;
+  color: #666;
+  background: #FFF;
+  margin-top: 53px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  height: 100%;
+}
+
+.doormonster-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+.doormonster-container a {
+  color: #c04b27;
+}
+
+.doormonster-container a:visited {
+  color: #c04b27;
+}
+
+.doormonster-container a:hover {
+  color: #d3a21e;
+}
+
+.sidebar {
+  display: none;
+}
+
+.bottom-spacer {
+  height: 63px;
+}
+
+.content-box {
+  display: grid;
+  margin: 30px;
+  padding: 1.5em;
+  max-width: 100%;
+  border: 2px solid #ccc;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20);
+  -pie-box-shadow: 0px 0px 30px -18px rgba(0, 0, 0, 0.20);
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  background-color: #fff;
+}
+
+.box-title {
+  font-weight: bold;
+  margin-bottom: 1em;
+  color: #c04b27;
+}
+
+.input-field {
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: "Century Gothic", sans-serif;
+}
+.notification-section {
+  z-index: 10;
+  position: fixed;
+}
+
+.input-button {
+  border: none;
+  padding: 0.5em;
+  vertical-align: middle;
+  outline-width: 0;
+  cursor: pointer;
+  font-family: 'Century Gothic', Arial, Helvetica, sans-serif;
+}
+
+.input-button:hover {
+  background: #d3a21e;
+}
+
+.left-button {
+  border-radius: 25px 0 0 25px;
+  -moz-border-radius: 25px 0 0 25px;
+  -webkit-border-radius: 25px 0 0 25px;
+  background: #c04b27;
+  color: white;
+  font-size: 110%;
+}
+
+.right-button {
+  border-radius: 0 25px 25px 0;
+  -moz-border-radius: 0 25px 25px 0;
+  -webkit-border-radius: 0 25px 25px 0;
+  background: #fff;
+  color: #666;
+  border: 1px solid #ccc;
+}
+
+.right-button:hover {
+  background: #d3a21e;
+  color: #fff;
+  border-color: #d3a21e;
+}
+
+.center-button {
+  border-radius: 25px;
+  background: #c04b27;
+  color: white;
+  font-size: 110%;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.input-button:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+@media only screen and (min-width: 600px) {
+
+  .content-box {
+    margin: 30px auto;
+    padding: 2em;
+    max-width: 400px;
+  }
+
+  .input-field {
+    padding: 0.8em 1em;
+  }
+
+  .input-button {
+    padding: 0.8em;
+  }
+
+}
+
+@media only screen and (min-width: 900px) {
+
+  body {
+    height: calc(100% - 106px);
+  }
+
+  .desktop-only {
+    display: block;
+  }
+
+  .doormonster-container {
+    display: grid;
+    grid-template-columns: 1fr 265px;
+    min-height: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    display: block;
+    background-color: #fff;
+    grid-column-start: 2;
+    padding: 10px;
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.40);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.40);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.40);
+    -pie-box-shadow: 0px 0px 30px -18px rgba(0, 0, 0, 0.40);
+  }
+
+  .bottom-spacer {
+    display: none;
+  }
+
+
+  /* Home */
+  .suggested-series {
+    width: 100%;
+    background-color: #872708;
+    border-bottom: 3px solid #c04b27;
+  }
+
+  .series-placeholder {
+    display: inline-block;
+    height: 360px;
+    width: 220px;
+    background-color: #fff;
+    margin: 20px 8px 23px 8px;
+  }
+
+  .series-list {
+    text-decoration: none;
+    height: 403px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: space-evenly;
+    overflow: hidden;
+  }
+
+
+  /* Video */
+  .comments {
+    padding: 25px;
+    margin-top: 15px;
+  }
+
+
+  .leftButton, .rightButton {
+    display: inline-block;
+    width: 30px;
+    height: 80px;
+    margin-top: 31px;
+  }
+
+  .leftButton {
+    float: left;
+  }
+
+  .rightButton {
+    float: right;
+  }
+
+  .prevVideo {
+    background: url(assets/images/prevVideo.png) center no-repeat;
+  }
+
+  .nextVideo {
+    background: url(assets/images/nextVideo.png) center no-repeat;
+  }
+
+  .prevVideo:hover, .nextVideo:hover {
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.20);
+    -pie-box-shadow: 0px 0px 40px -18px rgba(0, 0, 0, 0.20);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .deadButton {
+    background: none;
+  }
+
+  .videoListContainer {
+    overflow: hidden;
+    width: 95%;
+    float: left;
+  }
+
+  .videoList {
+    list-style-type: none;
+    margin-top: 30px;
+    padding: 0;
+    font-size: 0;
+    white-space: nowrap;
+    left: 0;
+    position: relative;
+    overflow-x: scroll;
+    overflow: hidden;
+  }
+
+  .videoList li {
+    display: inline-block;
+    margin: 0 12px 0 0;
+    padding: 0;
+    width: 138px;
+    height: 78px;
+    border: solid 1px #fff;
+  }
+
+  .videoLinkCompact a {
+    display: inline-block;
+    -webkit-filter: brightness(0.4);
+    -moz-filter: brightness(0.4);
+    -o-filter: brightness(0.4);
+    -ms-filter: brightness(0.4);
+    filter: brightness(0.4);
+  }
+
+  .videoLinkCompact a:hover, .videoLinkCompact a.selected {
+    -webkit-filter: brightness(1);
+    -moz-filter: brightness(1);
+    -o-filter: brightness(1);
+    -ms-filter: brightness(1);
+    filter: brightness(1);
+  }
+
+  .videoLinkCompact a.selected {
+  }
+
+  .videoLinkCompact a img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .videoLinkCompact a span {
+    display: none;
+  }
+
+  .videoTitle {
+    float: left;
+    display: inline-block;
+    font-weight: normal;
+  }
+
+  .viewCount, .videoYear {
+    float: right;
+    display: inline-block;
+    font-weight: normal;
+  }
+
+  .relatedVideoList li:nth-of-type(1n+4) {
+    display: none;
+  }
+
+}
+
+.hollow-button:hover {
+  border-color: #d3a21e;
+  color: #c04b27;
+
+}
+
+.hollow-button {
+  height: 50px;
+  line-height: 50px;
+  font-size: 120%;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 2px solid #c04b27;
+  color: #c04b27;
+}

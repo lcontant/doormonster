@@ -1,0 +1,6 @@
+<div class="comment-input">
+  <textarea class="comment-textbox" rows="4" cols="50" [(ngModel)]="inputComment">
+  </textarea>
+  <button class="cancel-comment" (click)="cancel()">Cancel</button>
+  <button class="submit-comment" (click)="sendComment()"  [disabled]="!canSubmitComment()" >Submit</button>
+</div>

@@ -1,0 +1,14 @@
+<form name="desktop-form">
+  <div class="searchbar">
+    <input type="text" class="search-text" name="searchQuery" [(ngModel)]="searchString" placeholder="search"/>
+    <button type="submit" class="search-button-desktop" [routerLink]="'/search/'+ searchString">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</form>
+<form (ngSubmit)="onSubmit($event)" name="mobile form">
+  <div class="searchbar-mobile">
+      <input type="search" class="search-text-mobile" placeholder="&#xf002;" [(ngModel)]="searchString" name="searchString">
+  </div>
+</form>
+

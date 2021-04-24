@@ -1,0 +1,10 @@
+<div class="post-feed">
+  <div *ngFor="let post of posts">
+    <div class="card" *ngIf="post.attributes.min_cents_pledged_to_view == 0 || (currentUser && currentUser.patreonContribution)">
+      <div class="card-title">
+        <h1>{{post.attributes.title}}</h1>
+      </div>
+      <div [innerHTML]="post.attributes.content"></div>
+    </div>
+  </div>
+</div>

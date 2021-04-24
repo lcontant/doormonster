@@ -1,0 +1,79 @@
+<div class="tabs">
+  <ul>
+    <li (click)="setActiveTab('Users')" [ngClass]="isActiveTab('Users') ? 'is-active': ''">
+      <a>Users</a>
+    </li>
+    <li (click)="setActiveTab('Videos')" [ngClass]="isActiveTab('Videos') ? 'is-active': ''">
+      <a>Videos</a>
+    </li>
+    <li (click)="setActiveTab('Feedback')" [ngClass]="isActiveTab('Feedback') ? 'is-active': ''">
+      <a>Feedback</a>
+    </li>
+    <li (click)="setActiveTab('Supporter')" [ngClass]="isActiveTab('Supporter') ? 'is-active': ''">
+      <a>Supporter</a>
+    </li>
+  </ul>
+</div>
+<div *ngIf="isActiveTab('Users') && users" class="admin-container">
+  <h1>{{users.length}} Users</h1>
+  <form class="video-search" (submit)="searchUser(searchString)">
+    <input type="search" id="userSearchField" (change)="searchUser(searchString)" [(ngModel)]="searchString"
+           name="searchField"/>
+    <button type="submit">Search</button>
+  </form>
+  <div *ngFor="let user of users_list" class="users" [routerLink]="'edit/'+ user.userId">
+    <div class="user">
+      <figure class="image is-64x64">
+        <img onerror="this.src = '../../../assets/images/avatar_default.png'"
+             [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + user.userId + '.jpg'"
+             class="user-image">
+      </figure>
+      <h2>{{user.username}}</h2>
+    </div>
+  </div>
+</div>
+<div *ngIf="isActiveTab('Videos')" class="admin-container">
+  <h1>Videos</h1>
+  <form class="video-search" (submit)="search()">
+    <input type="search" id="searchField" [(ngModel)]="searchString" name="searchField"/>
+    <button type="submit">Search</button>
+  </form>
+  <div class="videos">
+    <div *ngFor="let video of videos" class="video" [routerLink]="'editVideo/'+ video.videoID">
+      <img class="pure-u-1"
+           [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + video.videoThumbnail"/>
+      <span class="video-title">{{video.videoTitle}}</span>
+    </div>
+  </div>
+</div>
+<div *ngIf="isActiveTab('Feedback')" class="admin-container">
+  <div *ngFor="let feedback of feedbackItems" class="media">
+    <div class="media-left">
+     <figure>
+       <img onerror="this.src = '../../../assets/images/avatar_default.png'"
+            [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + feedback.user.userId + '.jpg'"
+            class="user-image">
+     </figure>
+      <span>{{feedback.user.username}}</span>
+    </div>
+    <div class="media-content">
+      <p>{{feedback.feedback.content}}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="isActiveTab('Supporter')" class="admin-container">
+  <h1>Total: {{totalAmount}}$</h1>
+  <div *ngFor="let supporter of supporterUsers" class="media">
+    <div class="media-left">
+      <figure>
+        <img onerror="this.src = '../../../assets/images/avatar_default.png'"
+             [src]="'https://s3.amazonaws.com/doormonster/assets/images/user/' + supporter.user.userId + '.jpg'"
+             class="user-image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <span>{{supporter.user.username}}</span>
+      <p>{{supporter.supporter.ammount / 100}}$</p>
+    </div>
+  </div>
+</div>

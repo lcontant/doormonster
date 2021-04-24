@@ -1,0 +1,20 @@
+<div class="series-header" *ngIf="series">
+  <img class="series-poster" [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/banner_' + seriesId + '.jpg'" />
+  <div class="series-info">
+    <h1>{{series.title}}</h1>
+    <p [innerHTML]="series.description"></p>
+  </div>
+</div>
+  <div *ngFor="let category of categories; let i = index">
+    <div class="videoBlock">
+      <h2 class="videoBlock-title">{{category}}</h2>
+      <ul class="videoBlock-list">
+        <li *ngFor="let video of getVideosForCategorie(category)" class="{{video.videoID}} videoLink">
+          <a class="videoLink-link" [href]="'videos/' + video.videoID" [title]="video.videoTitle">
+            <img class="videoLink-image" [src]="'https://s3.amazonaws.com/doormonster/assets/images/videos/' + sanitizePath(video.videoThumbnail)" [alt]="video.videoTitle" border="0">
+            <span [class]="'videoInfo ' + video.videoID">{{shortenTitle(video.videoTitle)}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>

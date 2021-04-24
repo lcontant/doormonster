@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-4">
+      <h1 class="title"> Podcast upload portal</h1>
+      <form>
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Podcast series title"
+                   [(ngModel)]="series.title"
+                   name="episodeName">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Summary</label>
+          <div class="">
+            <textarea id="summaryInput" rows="5" name="summaryInput" [(ngModel)]="series.description"></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <div class="file is-centered is-link has-name is-boxed">
+            <label class="file-label">
+              <input class="file-input" type="file" (change)="onThumbnailChanged($event)">
+              <span class="file-cta">
+                 <span class="file-icon">
+                  <i class="fa fa-image"></i>
+                 </span>
+                 <span class="file-label">
+                  Podcast thumbnail
+                 </span>
+              </span>
+              <figure class="image is-4by3">
+                <img class="thumbnail is-4by3" width="200" *ngIf="!thumbnailFile">
+                <img class="thumbnail is-4by3" width="200" *ngIf="thumbnailFile" [src]="currentThumbnail">
+              </figure>
+            </label>
+          </div>
+        </div>
+        <div>
+          <button class="button is-info" (click)="uploadVideoSeries()">Upload <br/> <i class="fa fa-cloud-upload"></i>
+          </button>
+        </div>
+        <p class="error">{{errorMessage}}</p>
+        <p class="success">{{successMessage}}</p>
+        <p class="is-info">{{progressMessage}}</p>
+        <progress [class]="'progress ' +  errorMessage ? 'error' : 'is-primary' " [value]="uploadProgress" max="100">{{uploadProgress}}%</progress>
+      </form>
+      <br/>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.login-form {
+  grid-template-rows: 50px 50px 50px;
+  grid-gap: 0.8em;
+}
+
+.signup-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: "Century Gothic", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 110%;
+  color: #c04b27;
+  padding: 0;
+  outline-width: 0;
+}
+  .signup-button:hover {
+    color: #d3a21e;
+  }
+
+.top-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fax-field {
+  display: none !important;
+}
+
+.error {
+  color: red;
+  align-self: center;
+}
+
+.no-account {
+  border-top: 1px solid #ccc;
+  padding-top: 1em;
+}

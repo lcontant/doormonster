@@ -1,0 +1,30 @@
+.player-container {
+  position: fixed;
+  bottom: 53px;
+  background-color: #c04b27;
+  box-shadow: black -7px -6px 12px 0px;
+  transition: 1s;
+  left: 25%;
+  width: 75%;
+}
+
+
+.audio-player {
+  color: #c04b27;
+  width:100%;
+}
+
+.round-button {
+  border-radius: 50%;
+}
+
+
+@media only screen and (min-width: 900px) {
+
+  .player-container{
+    width: 50%;
+  }
+
+}
+
+

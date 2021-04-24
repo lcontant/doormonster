@@ -1,0 +1,130 @@
+.series-header {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  border-bottom: 1px solid #ccc;
+}
+
+.series-poster {
+  width: 100%;
+}
+
+.series-info {
+  margin: 20px 30px;
+  text-align: left;
+  align-self: center;
+}
+
+.videoBlock {
+  margin: 20px;
+  text-align: left;
+}
+
+.videoBlock-title {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+.videoBlock-list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  overflow: hidden;
+}
+
+/*.videoBlock-list:after {
+  content: "";
+  width: 180px;
+  height: 0;
+}*/
+
+.videoLink {
+  
+}
+
+.videoLink-link {
+  border: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  max-width: 180px;
+}
+  .videoLink-link:hover {
+    background-color: #d3a21e;
+    border-color: #d3a21e;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.20);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.20);
+    -pie-box-shadow: 0px 0px 15px -18px rgba(0,0,0,0.20);
+  }
+
+.videoLink-image {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+.videoInfo {
+  display: inline-block;
+  margin: 0 0.5em;
+  height: 25px;
+  line-height: 25px;
+  font-size: 80%;
+  overflow: hidden;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+  
+  .videoBlock-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .series-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .series-info {
+    margin: 0 30px;
+  }
+  
+  .videoBlock-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+}
+
+@media only screen and (min-width: 1800px) {
+  
+  .series-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid #ccc;
+  }
+
+  .series-poster {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  
+  .series-info {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  .videoBlock-list {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+}

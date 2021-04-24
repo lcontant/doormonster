@@ -1,0 +1,113 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.eye-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 300px;
+  top: 25%;
+}
+
+#doormonster-loading-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#doormonster-loading-icon .head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c24b28;
+  width: 90%;
+  height: 90%;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+#doormonster-loading-icon .background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c24b28;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+}
+#doormonster-loading-icon .sclera {
+  background-color: white;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+}
+#doormonster-loading-icon .eye {
+  position: relative;
+  display: inline-block;
+  top: 35%;
+  left: 35%;
+  animation: move-eye 3s infinite;
+  background-color: #c24b28;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+}
+#doormonster-loading-icon .pupil {
+  background-color: white;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+}
+
+@keyframes move-eye {
+  0% {
+    top: 35%;
+    left: 35%;
+  }
+
+  20% {
+    top: 35%;
+    left: 35%;
+  }
+
+  25% {
+    top: 15%;
+    left: 15%;
+  }
+
+  45% {
+    top: 15%;
+    left: 15%;
+  }
+
+  50% {
+    top: 15%;
+    left: 55%;
+  }
+
+  70% {
+    top: 15%;
+    left: 55%;
+  }
+
+  75% {
+    top: 55%;
+    left: 35%;
+  }
+
+  90% {
+    top: 55%;
+    left: 35%;
+  }
+
+  95% {
+    top: 35%;
+    left: 35%;
+  }
+}
+

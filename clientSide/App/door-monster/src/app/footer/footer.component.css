@@ -1,0 +1,24 @@
+.doormonster-foorter {
+  display: none;
+}
+
+    @media only screen and (min-width: 900px) {
+
+      .doormonster-foorter {
+        display: block;
+        border-top: 3px solid #872708;
+        background: #c04b27;
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
+      }
+      .copyright {
+        padding-left: 1em;
+      }
+      .copyright form {
+        position: relative;
+        float: right;
+        top: 15px;
+      }
+
+    }

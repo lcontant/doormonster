@@ -1,0 +1,38 @@
+
+.video-container {
+    overflow: hidden;
+}
+.video-responsive {
+    overflow: hidden;
+    position: relative;
+    width:  75%;
+    margin-left: 11%;
+    background: #111;
+}
+
+
+
+
+@media only screen and (min-width: 900px) and (orientation:landscape) {
+
+    html, body {
+        overflow: auto;
+      }
+    .video-container {
+        z-index: 1;
+        position: relative;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+
+}
+
+@media only screen and (min-width: 1600px) {
+
+
+
+}
+
