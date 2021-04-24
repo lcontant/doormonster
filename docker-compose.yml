@@ -1,0 +1,58 @@
+version: '3.7'
+
+services: 
+  web:
+    build: clientdocker
+    image: doormonster:client
+    volumes:
+      - ./clientSide:/home/app/client
+      - ./feed:/home/app/feed
+      - ./certificates:/home/app/certificates
+      - ./certificates:/etc/letsencrypt/live/doormonster.tv
+      - ./clientdocker/sites:/etc/nginx/sites-enabled
+      - ./clientdocker/entrypoint:/home/entrypoint
+    working_dir: /home/app/client/App/door-monster
+    ports:
+      -  "4200:4200"
+      -  "443:443"
+      -  "465:465"
+    network_mode: "host"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 250M
+  server:
+    build: serverdocker
+    image: doormonster:server
+    volumes:
+      - ./server:/app/server
+      - ./feed:/app/feed
+      - ./clientSide/App/door-monster/dist/door-monster/assets/images:/app/dist/images
+      - ./clientSide/App/door-monster/src/assets/images:/app/images
+      - ./certificates:/app/certificates
+      - ./serverdocker/entrypoint:/app/entrypoint
+    working_dir: /app/server/DoorMonsterRestAPI
+    ports:
+      -  "8080:8080"
+    network_mode: "host"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 250M
+  mysql:
+    image: mysql:latest
+    ports: 
+      -  "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
+      MYSQL_DATABASE: whiteli4_wlhqdata_dev
+    volumes:
+    - ./DBinit:/docker-entrypoint-initdb.d
+    - ./mysql:/etc/mysql/conf.d
+    - ./certificates:/certificates
+    network_mode: "host"
+    security_opt:
+      - seccomp:unconfined
+
