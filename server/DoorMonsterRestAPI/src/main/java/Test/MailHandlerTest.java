@@ -18,7 +18,7 @@ public class MailHandlerTest {
     public void setUp() throws Exception {
         this.user = new UserDto();
         user.email = "treymaryott@gmail.com";
-        this.mailHandler = new MailHandler();
+        this.mailHandler = new MailHandler("", "");
     }
 
     @Test
