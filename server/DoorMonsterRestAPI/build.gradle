@@ -113,7 +113,7 @@ jooq {
             driver = 'com.mysql.jdbc.Driver'
             url = 'jdbc:mysql://doormonster.tv:3306/whiteli4_wlhqdata_dev'
             user = 'root'
-            password = '2idCX73JzHUV3y9f'
+            password = 'MYSQL_PASSWORD'
             autoCommit = true
             properties {
                 property {
