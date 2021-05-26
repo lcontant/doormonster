@@ -17,7 +17,7 @@ export class SessionService {
   startSession(sessionId: string) {
     let expirationDate: Date = new Date();
     expirationDate.setDate(expirationDate.getDate() + 60);
-    this.cookieService.set('sessionId', sessionId,expirationDate);
+    window.localStorage.setItem('sessionId', sessionId);
     this.notifyEveryone();
   }
 
@@ -26,12 +26,12 @@ export class SessionService {
   }
 
   stopSession() {
-    this.cookieService.delete('sessionId');
+    window.localStorage.removeItem('sessionId');
     this.notifyEveryone();
   }
 
   getSessionId(): string {
-   return  this.cookieService.get('sessionId');
+   return  window.localStorage.getItem('sessionId');
   }
 
   subscribe(callback: Function) {
