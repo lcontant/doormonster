@@ -15,6 +15,6 @@ public class AWSCredentialsHandler implements AwsCredentialsProvider {
 
     @Override
     public AwsCredentials resolveCredentials() {
-        return AwsBasicCredentials.create("", "");
+        return AwsBasicCredentials.create(this.ACCESS_KEY, this.SECRET_KEY);
     }
 }
