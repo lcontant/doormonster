@@ -1,5 +1,7 @@
 # First Time Setup
+##Note
 
+This is a repo transfer from our private bitbucket repo which explains the short history
 ## AWS access
 Get an AWS key for you storage (You should be able to get away with the free tier for testing)
 and replace the values `AWS_ACCESS_KEY_HERE` with you access key and replace the `AWS_SECRET_KEY_HERE` with your key.
